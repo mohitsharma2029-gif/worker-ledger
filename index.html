@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -599,7 +598,15 @@ function WorkerLedger() {
     await db.collection(PAYMENT_COLLECTION).doc(id).delete();
   }
 
-  async function resetAll() {
+  const RESET_PASSWORD = "bhabhi123";
+
+async function resetAll() {
+    var pass = window.prompt("Enter the password to reset all data:");
+    if (pass === null) return;
+    if (pass !== RESET_PASSWORD) {
+      alert("Incorrect password. Data was not reset.");
+      return;
+    }
     const ok = window.confirm(
       "This clears ALL sent, received, and payment entries for every device using this app. This cannot be undone. Continue?"
     );
